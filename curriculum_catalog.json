@@ -1,0 +1,98 @@
+{
+  "source": "MINEDUC Guatemala / DIGECUR",
+  "official_page": "https://digecur.mineduc.gob.gt/departamentos/nivel-primaria/",
+  "cnb_portal": "https://digecur.mineduc.gob.gt/curriculo-nacional-base-cnb/",
+  "mallas": "https://cnb.mineduc.gob.gt/mediawiki/index.php?title=Mallas_Curriculares_por_%C3%81rea_y_Grado_-_Primaria",
+  "grades": [
+    {
+      "grade": "Primero primaria",
+      "document": "https://digecur.mineduc.gob.gt/wp-content/uploads/2026/08/1er-grado-CNB-1.pdf",
+      "areas": [
+        "Comunicación y Lenguaje L1 (idioma materno)",
+        "Comunicación y Lenguaje L2 (segundo idioma)",
+        "Comunicación y Lenguaje L3 (tercer idioma)",
+        "Matemáticas",
+        "Medio Social y Natural",
+        "Expresión Artística",
+        "Educación Física",
+        "Formación Ciudadana"
+      ]
+    },
+    {
+      "grade": "Segundo primaria",
+      "document": "https://digecur.mineduc.gob.gt/wp-content/uploads/2026/08/2do-grado-CNB-1.pdf",
+      "areas": [
+        "Comunicación y Lenguaje L1 (idioma materno)",
+        "Comunicación y Lenguaje L2 (segundo idioma)",
+        "Comunicación y Lenguaje L3 (tercer idioma)",
+        "Matemáticas",
+        "Medio Social y Natural",
+        "Expresión Artística",
+        "Educación Física",
+        "Formación Ciudadana"
+      ]
+    },
+    {
+      "grade": "Tercero primaria",
+      "document": "https://digecur.mineduc.gob.gt/wp-content/uploads/2026/08/3er-grado-CNB-1.pdf",
+      "areas": [
+        "Comunicación y Lenguaje L1 (idioma materno)",
+        "Comunicación y Lenguaje L2 (segundo idioma)",
+        "Comunicación y Lenguaje L3 (tercer idioma)",
+        "Matemáticas",
+        "Medio Social y Natural",
+        "Expresión Artística",
+        "Educación Física",
+        "Formación Ciudadana"
+      ]
+    },
+    {
+      "grade": "Cuarto primaria",
+      "document": "https://digecur.mineduc.gob.gt/wp-content/uploads/2026/08/4to-grado-CNB-1.pdf",
+      "areas": [
+        "Comunicación y Lenguaje L1 (idioma materno)",
+        "Comunicación y Lenguaje L2 (segundo idioma)",
+        "Comunicación y Lenguaje L3 (tercer idioma)",
+        "Matemáticas",
+        "Ciencias Sociales",
+        "Ciencias Naturales y Tecnología",
+        "Expresión Artística",
+        "Educación Física",
+        "Formación Ciudadana",
+        "Productividad y Desarrollo"
+      ]
+    },
+    {
+      "grade": "Quinto primaria",
+      "document": "https://digecur.mineduc.gob.gt/wp-content/uploads/2026/08/5to-grado-CNB-1.pdf",
+      "areas": [
+        "Comunicación y Lenguaje L1 (idioma materno)",
+        "Comunicación y Lenguaje L2 (segundo idioma)",
+        "Comunicación y Lenguaje L3 (tercer idioma)",
+        "Matemáticas",
+        "Ciencias Sociales",
+        "Ciencias Naturales y Tecnología",
+        "Expresión Artística",
+        "Educación Física",
+        "Formación Ciudadana",
+        "Productividad y Desarrollo"
+      ]
+    },
+    {
+      "grade": "Sexto primaria",
+      "document": "https://digecur.mineduc.gob.gt/wp-content/uploads/2026/08/6to-grado-CNB-1.pdf",
+      "areas": [
+        "Comunicación y Lenguaje L1 (idioma materno)",
+        "Comunicación y Lenguaje L2 (segundo idioma)",
+        "Comunicación y Lenguaje L3 (tercer idioma)",
+        "Matemáticas",
+        "Ciencias Sociales",
+        "Ciencias Naturales y Tecnología",
+        "Expresión Artística",
+        "Educación Física",
+        "Formación Ciudadana",
+        "Productividad y Desarrollo"
+      ]
+    }
+  ]
+}

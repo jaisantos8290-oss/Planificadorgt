@@ -1,0 +1,14 @@
+import express from "express";import dotenv from "dotenv";import fs from "node:fs/promises";import path from "node:path";import {fileURLToPath} from "node:url";
+dotenv.config();const dir=path.dirname(fileURLToPath(import.meta.url)),app=express(),port=Number(process.env.PORT||3000);
+app.use(express.json({limit:"1mb"}));app.use(express.static(path.join(dir,"public")));
+app.get("/api/curriculum",async(_q,s)=>s.json(JSON.parse(await fs.readFile(path.join(dir,"data/curriculum_catalog.json"),"utf8"))));
+app.get("/api/health",(_q,s)=>s.json({ok:true,aiConfigured:!!process.env.GEMINI_API_KEY}));
+app.post("/api/plan",async(req,res)=>{const d=req.body||{};if(!d.grade||!d.area||!d.topic)return res.status(400).json({error:"Completa grado, área y tema."});if(!process.env.GEMINI_API_KEY)return res.status(503).json({error:"IA no configurada. Usa Generar básico o configura GEMINI_API_KEY en .env."});
+const c=JSON.parse(await fs.readFile(path.join(dir,"data/curriculum_catalog.json"),"utf8"));const g=c.grades.find(x=>x.grade===d.grade);const source=g?.document||c.official_page;
+const prompt=`Crea una planificación didáctica para educación primaria en Guatemala. Devuelve solo HTML simple con h3,h4,p,ul,ol,li,strong,em. No uses scripts.
+Grado: ${d.grade}; área: ${d.area}; tema: ${d.topic}; duración: ${d.duration}; metodología: ${d.method}; recursos: ${d.resources}; necesidades: ${d.needs}; evaluación: ${d.evaluation}; contexto: ${d.context||"Comunidad guatemalteca"}.
+Texto que el docente ha copiado del CNB: competencia=${d.competency||"NO PROPORCIONADA"}; indicador=${d.indicator||"NO PROPORCIONADO"}; contenido=${d.curricularContent||"NO PROPORCIONADO"}.
+Fuente oficial de referencia: ${source}.
+Incluye objetivo, inicio/desarrollo/cierre con tiempos, recursos, inclusión, evaluación con criterios y reflexión docente. Nunca inventes ni atribuyas al CNB competencias, indicadores o códigos que no estén en el texto proporcionado. Si faltan, escribe pendiente de verificar en el CNB oficial. No afirmes validación oficial.`;
+try{const model=process.env.GEMINI_MODEL||"gemini-2.5-flash";const r=await fetch("https://generativelanguage.googleapis.com/v1beta/models/"+encodeURIComponent(model)+":generateContent",{method:"POST",headers:{"Content-Type":"application/json","x-goog-api-key":process.env.GEMINI_API_KEY},body:JSON.stringify({contents:[{role:"user",parts:[{text:prompt}]}],generationConfig:{temperature:.45,maxOutputTokens:5000}})});const p=await r.json();if(!r.ok)return res.status(502).json({error:"Error de IA. Revisa clave, modelo y cuota."});const html=p?.candidates?.[0]?.content?.parts?.map(x=>x.text||"").join("").trim();if(!html)return res.status(502).json({error:"La IA no devolvió contenido."});res.json({html});}catch(e){res.status(500).json({error:"Error del servidor."});}});
+app.listen(port,()=>console.log("PlanificaCNB GT: http://localhost:"+port));
